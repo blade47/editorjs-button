@@ -1,6 +1,6 @@
 {
-  "name": "editorjs-button",
-  "version": "3.0.3",
+  "name": "@blade47/editorjs-button",
+  "version": "3.0.5",
   "keywords": [
     "codex editor",
     "button",
@@ -21,15 +21,15 @@
     "raw-loader": "^4.0.1"
   },
   "bugs": {
-    "url": "https://github.com/kaaaaaaaaaaai/editorjs-button/issues"
+    "url": "https://github.com/blade47/editorjs-button/issues"
   },
-  "homepage": "https://github.com/kaaaaaaaaaaai/editorjs-button#readme",
+  "homepage": "https://github.com/blade47/editorjs-button#readme",
   "directories": {
     "example": "example"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kaaaaaaaaaaai/editorjs-button.git"
+    "url": "git+https://github.com/blade47/editorjs-button.git"
   },
   "dependencies": {
     "@babel/core": "^7.24.4",

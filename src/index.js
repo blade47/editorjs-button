@@ -18,7 +18,7 @@ export default class AnyButton {
             {
                 name: 'edit_mode',
                 icon: svg,
-                title: 'ボタンを編集',
+                title: 'Edit',
             }
         ]
     }
@@ -73,7 +73,7 @@ export default class AnyButton {
      */
     set data(data) {
         this._data = Object.assign({}, {
-            link: this.api.sanitizer.clean(data.link || "", AnyButton.sanitize),
+            link: data.link || "",
             text: this.api.sanitizer.clean(data.text || "", AnyButton.sanitize)
         });
     }
@@ -86,7 +86,6 @@ export default class AnyButton {
     }
 
     /**
-     * セーブ時のバリデーション
      * @param savedData
      * @returns {boolean}
      */
@@ -107,7 +106,6 @@ export default class AnyButton {
     }
 
     /**
-     * タグを全部削除する
      * @returns {{link: boolean, text: boolean}}
      */
     static get sanitize(){
@@ -118,21 +116,19 @@ export default class AnyButton {
     }
 
     defaultLinkValidation(text){
-        //全ての文字列が渡されるがURLのみ許可する. URLじゃない文字列も考慮する
         let url = null;
         try {
             url = new URL(text);
         }catch (e){
             notifier.show({
-                message: "URLが間違っています",
+                message: "URL not valid",
                 style: 'error'
             })
             return false;
         }
-        //httpsかhttpが入っていなければエラー
         if(url.protocol !== "https:" && url.protocol !== "http:"){
             notifier.show({
-                message: "正しいURLを入力してください",
+                message: "URL must begin with http(s)",
                 style: 'error'
             })
             return false;
@@ -143,7 +139,7 @@ export default class AnyButton {
     defaultTextValidation(text){
         if(text === ""){
             notifier.show({
-                message: "ボタンのテキストを入力してください",
+                message: "Text cannot be empty",
                 style: 'error'
             })
             return false;
@@ -204,7 +200,6 @@ export default class AnyButton {
         this.nodes.wrapper = this.make('div', this.CSS.baseClass);
         this.nodes.container = this.make('div', this.CSS.container); //twitter-embed-tool
 
-        //入力用
         this.nodes.inputHolder = this.makeInputHolder();
         //display button
         this.nodes.anyButtonHolder = this.makeAnyButtonHolder();
@@ -239,7 +234,6 @@ export default class AnyButton {
         this.nodes.registButton = this.make('button',[this.api.styles.button, this.CSS.registButton]);
         this.nodes.registButton.type = 'button';
         this.nodes.registButton.textContent = this.api.i18n.t('Set');
-
 
         this.nodes.registButton.addEventListener('click', (event) => {
 
@@ -300,7 +294,7 @@ export default class AnyButton {
     }
 
     /**
-     * node 作成用
+     * node
      * @param tagName
      * @param classNames
      * @param attributes
